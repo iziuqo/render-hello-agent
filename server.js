@@ -1,27 +1,24 @@
 // server.js
 const express = require("express");
-const cors    = require("cors");           // ← new
-const { Configuration, OpenAIApi } = require("openai");
-const app = express();
-app.use(
-  cors({ origin: "https://render-hello-agent.onrender.com" })
-);
+const cors    = require("cors");
+const OpenAI  = require("openai");      // ← default import for v4
 
-// pull your key from env
-const config = new Configuration({
+const app = express();
+app.use(cors());
+
+const openai = new OpenAI({              // ← instantiate directly
   apiKey: process.env.OPENAI_API_KEY
 });
-const openai = new OpenAIApi(config);
 
 app.get("/agent", async (req, res) => {
   try {
-    // you can grab a prompt from query params if you like:
     const prompt = req.query.q || "Say hello!";
-    const completion = await openai.createChatCompletion({
+    const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: prompt }]
+      messages: [{ role: "user", content: prompt }],
     });
-    const text = completion.data.choices[0].message.content.trim();
+    // v4 response shape: completion.choices[0].message.content
+    const text = completion.choices[0].message.content.trim();
     res.json({ response: text });
   } catch (err) {
     console.error(err);
