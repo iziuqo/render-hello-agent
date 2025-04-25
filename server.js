@@ -3,7 +3,9 @@ const express = require("express");
 const cors    = require("cors");           // ← new
 const { Configuration, OpenAIApi } = require("openai");
 const app = express();
-app.use(cors());                            // ← allow all origins
+app.use(
+  cors({ origin: "https://render-hello-agent.onrender.com" })
+);
 
 // pull your key from env
 const config = new Configuration({
