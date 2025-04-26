@@ -64,7 +64,7 @@ app.get("/styleguide", (req, res) => {
     },
     typography: [
       { name: "Heading 1", family: "Inter", style: "Bold", size: 32, lineHeight: 40 },
-      { name: "Heading 2", family: "Inter", style: "Semi Bold", size: 24, lineHeight: 32 },
+      { name: "Heading 2", family: "Inter", style: "Bold", size: 24, lineHeight: 32 },
       { name: "Body",      family: "Inter", style: "Regular", size: 16, lineHeight: 24 }
     ],
     spacing: {
