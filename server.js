@@ -93,7 +93,7 @@ app.get("/styleguide", (req, res) => {
     },
     typography: [
       { name: "Heading 1", family: h1Font, style: "Bold", size: 32, lineHeight: 40 },
-      { name: "Heading 2", family: h2Font, style: "Semibold", size: 24, lineHeight: 32 },
+      { name: "Heading 2", family: h2Font, style: "400", size: 24, lineHeight: 32 },
       { name: "Body",      family: bodyFont, style: "Regular", size: 16, lineHeight: 24 }
     ],
     spacing: {
